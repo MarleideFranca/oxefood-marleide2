@@ -2,10 +2,10 @@ package br.com.ifpe.oxefoodmarleide.modelo.produto;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import antlr.StringUtils;
 import br.com.ifpe.oxefoodmarleide.util.entity.GenericService;
 import br.com.ifpe.oxefoodmarleide.util.entity.exception.EntityAlreadyExistsException;
 
