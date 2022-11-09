@@ -1,5 +1,9 @@
 package br.com.ifpe.oxefoodmarleide.util.entity;
 
+import java.time.LocalDate;
+
+import br.com.ifpe.oxefoodmarleide.util.exception.PreenchimentoException;
+
 public class GenericService {
 
     public void preencherCamposAuditoria(EntidadeAuditavel entity) {

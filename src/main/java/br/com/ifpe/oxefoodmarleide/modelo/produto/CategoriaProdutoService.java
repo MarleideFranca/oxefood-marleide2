@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifpe.oxefoodmarleide.util.entity.GenericService;
-import br.com.ifpe.oxefoodmarleide.util.entity.exception.EntityAlreadyExistsException;
+import br.com.ifpe.oxefoodmarleide.util.exception.EntityAlreadyExistsException;
 
 @Service
 public class CategoriaProdutoService extends GenericService {

@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefoodmarleide.util.entity.exception;
+package br.com.ifpe.oxefoodmarleide.util.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
