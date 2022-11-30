@@ -1,5 +1,7 @@
 package br.com.ifpe.oxefoodmarleide.modelo.produto;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,39 +13,51 @@ import br.com.ifpe.oxefoodmarleide.util.exception.EntityAlreadyExistsException;
 
 @Service
 public class CategoriaProdutoService extends GenericService {
-    
-    @Autowired
-    private CategoriaProdutoRepository repository;
 
-    @Transactional
-    public CategoriaProduto save(CategoriaProduto categoriaProduto) {
+	@Autowired
+	private CategoriaProdutoRepository repository;
 
-    super.validarRegistroVazio(categoriaProduto.getDescricao(), "descrição");
-    this.validarCategoriaProdutoExistente(categoriaProduto, null);
-    super.preencherCamposAuditoria(categoriaProduto);
+	@Transactional
+	public CategoriaProduto obterCategoriaPorID(Long id) {
+		return repository.findById(id).get();
+	}
 
-    return repository.save(categoriaProduto);
-    }
+	@Transactional
+	public List<CategoriaProduto> consultarPorChaveEmpresa(String chaveEmpresa) {
+		return repository.findByChaveEmpresaOrderByDescricaoAsc(chaveEmpresa);
+	}
 
-    private void validarCategoriaProdutoExistente(CategoriaProduto categoriaParam, Long id) {
+	@Transactional
+	public CategoriaProduto save(CategoriaProduto categoriaProduto) {
 
-    if (StringUtils.isNotBlank(categoriaParam.getDescricao())) {
+		super.validarRegistroVazio(categoriaProduto.getDescricao(), "descrição");
+		this.validarCategoriaProdutoExistente(categoriaProduto, null);
+		super.preencherCamposAuditoria(categoriaProduto);
 
-        CategoriaProduto categoria = repository.findByChaveAndDescricao(categoriaParam.getChaveEmpresa(), categoriaParam.getDescricao());
+		return repository.save(categoriaProduto);
+	}
 
-        if (id == null) { // O id será null quando este método for chamado para validar a inclusão de novas categorias
+	private void validarCategoriaProdutoExistente(CategoriaProduto categoriaParam, Long id) {
 
-        if (categoria != null) {
-            throw new EntityAlreadyExistsException(CategoriaProduto.LABEL, "Descrição");
-        }
+		if (StringUtils.isNotBlank(categoriaParam.getDescricao())) {
 
-        } else { // O id NÃO será null quando este método for chamado para validar a alteração de categorias
+			CategoriaProduto categoria = repository.findByChaveAndDescricao(categoriaParam.getChaveEmpresa(),
+					categoriaParam.getDescricao());
 
-        if (categoria != null && categoria.getId() != id) {
-            throw new EntityAlreadyExistsException(CategoriaProduto.LABEL, "Descrição");
-        }
-        }
-    }
-    }
+			if (id == null) { // O id será null quando este método for chamado para validar a inclusão de
+								// novas categorias
+
+				if (categoria != null) {
+					throw new EntityAlreadyExistsException(CategoriaProduto.LABEL, "Descrição");
+				}
+
+			} else { // O id NÃO será null quando este método for chamado para validar a alteração de
+						// categorias
+
+				if (categoria != null && categoria.getId() != id) {
+					throw new EntityAlreadyExistsException(CategoriaProduto.LABEL, "Descrição");
+				}
+			}
+		}
+	}
 }
-
