@@ -19,7 +19,11 @@ public class CategoriaProdutoRequest {
 	@Size(max = 1000)
 	@NotNull
 	@NotEmpty
+	private Long idCategoria;
+	private String codigo;
+	private String titulo;
 	private String descricao;
+	private double valorUnitario;
 
 	public CategoriaProduto buildCategoriaProduto() {
 		return CategoriaProduto.builder().chaveEmpresa(chaveEmpresa).descricao(descricao).build();

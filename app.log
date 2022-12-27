@@ -1,3 +1,5 @@
-2022-12-02 23:10:05.786  INFO 58716 --- [http-nio-8082-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-12-02 23:10:05.820  INFO 58716 --- [http-nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-12-02 23:10:05.830  INFO 58716 --- [http-nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2022-12-22 21:04:42.921  INFO 18367 --- [RMI TCP Connection(175)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-22 21:04:44.940  INFO 18367 --- [RMI TCP Connection(175)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-22 21:04:45.458  INFO 18367 --- [RMI TCP Connection(175)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-22 21:04:45.730  INFO 18367 --- [RMI TCP Connection(175)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-22 21:04:45.806  INFO 18367 --- [RMI TCP Connection(175)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

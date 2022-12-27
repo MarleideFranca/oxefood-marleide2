@@ -11,6 +11,13 @@ import org.springframework.stereotype.Service;
 import br.com.ifpe.oxefoodmarleide.util.entity.GenericService;
 import br.com.ifpe.oxefoodmarleide.util.exception.EntityAlreadyExistsException;
 
+/**
+ * Classe responsável pelas operações relativas a uma {@link CategoriaProduto}.
+ * 
+ * @author Marleide Alves
+ *
+ */
+
 @Service
 public class CategoriaProdutoService extends GenericService {
 
@@ -36,6 +43,24 @@ public class CategoriaProdutoService extends GenericService {
 
 		return repository.save(categoriaProduto);
 	}
+		
+		@Transactional
+		public void update(Long id, CategoriaProduto categoriaProdutoAlterado){
+		validarCategoriaProdutoExistente(categoriaProdutoAlterado, id);
+		CategoriaProduto categoria = this.obterCategoriaPorID(id);
+		categoria.updateFrom(categoriaProdutoAlterado);
+		super.preencherCamposAuditoria(categoria);
+		repository.save(categoria);
+		}
+		
+		@Transactional
+		public void delete(Long id) {
+		CategoriaProduto categoria = this.obterCategoriaPorID(id);
+		categoria.setHabilitado(Boolean.FALSE);
+		super.preencherCamposAuditoria(categoria);
+		repository.save(categoria);
+		}
+	
 
 	private void validarCategoriaProdutoExistente(CategoriaProduto categoriaParam, Long id) {
 
